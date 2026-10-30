@@ -2,7 +2,6 @@
 
 Standalone MCP server (stdio, JSON-RPC 2.0) exposing web search tools:
 
-- `search_serper` — Google search via Serper (requires `SERPER_API_KEY`).
 - `search_serp_free` — keyless SERP scraping (DuckDuckGo, SearXNG, Brave).
 
 ## Run
@@ -22,17 +21,10 @@ npm test
 ```json
 "search-skills": {
   "type": "local",
-  "command": ["npx", "-y", "github:kobzevvv/trained-assist-search-skill"],
+  "command": ["node", "/Users/vova/code/trained-assist-search-skill/src/mcp-skills/index.js"],
   "environment": {
-    "FREE_SEARCH_BACKEND": "duckduckgo,searxng,brave",
-    "SERPER_API_KEY": "{file:/path/to/serper-key}"
+    "FREE_SEARCH_BACKEND": "duckduckgo,searxng,brave"
   },
   "disabled": false
 }
-```
-
-Or use a local clone:
-
-```json
-"command": ["node", "/path/to/trained-assist-search-skill/src/mcp-skills/index.js"]
 ```

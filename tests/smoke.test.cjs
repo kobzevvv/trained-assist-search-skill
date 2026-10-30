@@ -27,7 +27,7 @@ function rpc(child, msg) {
   });
 }
 
-test('MCP initialize + tools/list exposes search_serper and search_serp_free', async () => {
+test('MCP initialize + tools/list exposes search_serp_free', async () => {
   const child = spawn(process.execPath, ['src/mcp-skills/index.js'], {
     cwd: process.cwd(),
     env: { ...process.env, FREE_SEARCH_BACKEND: 'duckduckgo,searxng,brave' },
@@ -39,7 +39,7 @@ test('MCP initialize + tools/list exposes search_serper and search_serp_free', a
 
     const list = await rpc(child, { jsonrpc: '2.0', id: 2, method: 'tools/list', params: {} });
     const names = list.result.tools.map((t) => t.name).sort();
-    assert.deepStrictEqual(names, ['search_serp_free', 'search_serper']);
+    assert.deepStrictEqual(names, ['search_serp_free']);
   } finally {
     child.kill();
   }
